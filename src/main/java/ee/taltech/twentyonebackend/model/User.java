@@ -2,37 +2,47 @@ package ee.taltech.twentyonebackend.model;
 
 import ee.taltech.twentyonebackend.pojo.UserDto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
+    private long id;
     private String name;
-    private Long id;
 
     public User() {
     }
 
     public User(UserDto userDto) {
         this.name = userDto.getName();
-        this.id = userDto.getId();
     }
 
-    public User(String name, Long id) {
+    public User(String name) {
         this.name = name;
+    }
+
+    public User(long id, String name) {
         this.id = id;
+        this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Long getId() {
-        return id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

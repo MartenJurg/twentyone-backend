@@ -1,6 +1,5 @@
 package ee.taltech.twentyonebackend.service;
 
-
 import ee.taltech.twentyonebackend.exception.UserNotFoundException;
 import ee.taltech.twentyonebackend.exception.UserValidationException;
 import ee.taltech.twentyonebackend.model.User;
