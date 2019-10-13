@@ -4,37 +4,34 @@ import ee.taltech.twentyonebackend.exception.UserNotFoundException;
 import ee.taltech.twentyonebackend.exception.UserValidationException;
 import ee.taltech.twentyonebackend.model.User;
 import ee.taltech.twentyonebackend.pojo.UserDto;
-import ee.taltech.twentyonebackend.repository.UsersRepository;
+import ee.taltech.twentyonebackend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    private final UsersRepository usersRepository;
+    @Resource
+    UserRepository userRepository;
 
-    public UserService(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    public UserDto loadUserByUsername(String username) throws UserNotFoundException {
+
+        User user = userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+
+        return new UserDto(user);
     }
 
     public List<User> getAllUsers() {
-        return usersRepository.findAll();
+        return userRepository.findAll();
     }
 
     public List<User> getByName(String name) {
-        return usersRepository.findByName(name);
+        return userRepository.findByName(name);
     }
 
     public User getById(Long id) {
-        return usersRepository.findById(id).orElseThrow(UserNotFoundException::new);
-    }
-
-    public UserDto createNewUser(UserDto userDto) {
-        User user = new User(userDto);
-        if (user.getName() == null) {
-            throw new UserValidationException();
-        }
-        return new UserDto(usersRepository.save(user));
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 }
