@@ -1,5 +1,6 @@
 package ee.taltech.twentyonebackend.controller;
 
+import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
 import ee.taltech.twentyonebackend.model.Role;
 import ee.taltech.twentyonebackend.model.RoleName;
 import ee.taltech.twentyonebackend.model.User;
@@ -34,12 +35,16 @@ public class AuthController {
 	@Resource
 	RoleRepository roleRepository;
 
-	@PostMapping("/signin")
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
+	@PostMapping("/login")
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginForm loginRequest) {
 		boolean authentication = authenticator.authenticate(
 				new UsernamePasswordDto(loginRequest.getUsername(), loginRequest.getPassword())
 		);
 
+		if (!authentication) {
+		    throw new AuthenticationFailedException();
+        }
+        // actually has to return authorities.
 		return ResponseEntity.ok(new JwtResponse(loginRequest.getUsername(), authentication));
 	}
 
