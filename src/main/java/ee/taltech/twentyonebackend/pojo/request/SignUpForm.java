@@ -1,7 +1,5 @@
 package ee.taltech.twentyonebackend.pojo.request;
 
-import java.util.Set;
-
 import javax.validation.constraints.*;
 
 public class SignUpForm {
@@ -17,9 +15,9 @@ public class SignUpForm {
     @Size(max = 60)
     @Email
     private String email;
-    
-    private Set<String> role;
-    
+
+    private String role;
+
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
@@ -55,12 +53,12 @@ public class SignUpForm {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public Set<String> getRole() {
-    	return this.role;
+
+    public String getRole() {
+        return this.role;
     }
-    
-    public void setRole(Set<String> role) {
-    	this.role = role;
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

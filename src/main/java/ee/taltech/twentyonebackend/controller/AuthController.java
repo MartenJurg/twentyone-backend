@@ -1,7 +1,6 @@
 package ee.taltech.twentyonebackend.controller;
 
 import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
-import ee.taltech.twentyonebackend.model.Role;
 import ee.taltech.twentyonebackend.model.RoleName;
 import ee.taltech.twentyonebackend.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
@@ -10,8 +9,7 @@ import ee.taltech.twentyonebackend.pojo.request.LoginForm;
 import ee.taltech.twentyonebackend.pojo.request.SignUpForm;
 import ee.taltech.twentyonebackend.pojo.response.JwtResponse;
 import ee.taltech.twentyonebackend.pojo.response.ResponseMessage;
-import ee.taltech.twentyonebackend.repository.RoleRepository;
-import ee.taltech.twentyonebackend.repository.UserRepository;
+import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,10 +28,7 @@ public class AuthController {
 	Authenticator authenticator;
 
 	@Resource
-	UserRepository userRepository;
-
-	@Resource
-	RoleRepository roleRepository;
+	UserService userService;
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginForm loginRequest) {
@@ -42,54 +37,43 @@ public class AuthController {
 		);
 
 		if (!authentication) {
-		    throw new AuthenticationFailedException();
+		    throw  new AuthenticationFailedException();
         }
+
         // actually has to return authorities.
 		return ResponseEntity.ok(new JwtResponse(loginRequest.getUsername(), authentication));
 	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
-		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+		if (userService.existsByUsername(signUpRequest.getUsername())) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
 					HttpStatus.BAD_REQUEST);
 		}
 
-		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+		if (userService.existsByEmail(signUpRequest.getEmail())) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
 					HttpStatus.BAD_REQUEST);
 		}
 
-		// Creating user's account
-		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				signUpRequest.getPassword());
+		String strRole = signUpRequest.getRole();
+		RoleName role ;
 
-		Set<String> strRoles = signUpRequest.getRole();
-		Set<Role> roles = new HashSet<>();
-
-		strRoles.forEach(role -> {
-			switch (role) {
+		switch (strRole) {
 			case "admin":
-				Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-				roles.add(adminRole);
-
+				role = RoleName.ROLE_ADMIN;
 				break;
 			case "pm":
-				Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
-						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-				roles.add(pmRole);
-
+				role = RoleName.ROLE_PM;
 				break;
 			default:
-				Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-				roles.add(userRole);
-			}
-		});
+				role = RoleName.ROLE_USER;
+		}
 
-		user.setRoles(roles);
-		userRepository.save(user);
+		// Creating user's account
+		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
+				signUpRequest.getPassword(), role);
+		userService.save(user);
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
 	}

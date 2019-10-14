@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="testdb" uuid="0e433c1a-d64d-454a-92b3-e4cd819a2d4d">
+    <data-source source="LOCAL" name="testdb" uuid="e6b73387-8b7d-4e76-8584-d73b5aa32158">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:testdb</jdbc-url>
+      <jdbc-url>jdbc:h2:~/testdb;AUTO_SERVER=TRUE</jdbc-url>
     </data-source>
   </component>
 </project>
