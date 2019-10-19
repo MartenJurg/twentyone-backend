@@ -1,4 +1,4 @@
-package ee.taltech.twentyonebackend.model;
+package ee.taltech.twentyonebackend.pojo;
 
 public enum  RoleName {
     ROLE_USER,

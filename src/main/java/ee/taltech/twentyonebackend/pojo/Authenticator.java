@@ -1,6 +1,5 @@
 package ee.taltech.twentyonebackend.pojo;
 
-import ee.taltech.twentyonebackend.model.User;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.stereotype.Component;
 
@@ -21,5 +20,4 @@ public class Authenticator {
         UserDto user = userService.getByUsername(username);
         return (username.equals(user.getUsername()) && password.equals(user.getPassword()));
     }
-
 }

@@ -30,7 +30,6 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
-
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

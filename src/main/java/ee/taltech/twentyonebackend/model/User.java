@@ -5,6 +5,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import ee.taltech.twentyonebackend.pojo.RoleName;
 import org.hibernate.annotations.NaturalId;
 
 @Entity

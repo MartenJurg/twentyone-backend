@@ -1,7 +1,7 @@
 package ee.taltech.twentyonebackend.controller;
 
 import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
-import ee.taltech.twentyonebackend.model.RoleName;
+import ee.taltech.twentyonebackend.pojo.RoleName;
 import ee.taltech.twentyonebackend.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
 import ee.taltech.twentyonebackend.pojo.Authenticator;
@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
