@@ -14,6 +14,13 @@ public class UserInventoryService {
     @Resource
     UserInventoryRepository userInventoryRepository;
 
+    public UserInventoryDto getByUsername(String username) throws UserNotFoundException {
+
+        UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+
+        return new UserInventoryDto(userInventory);
+    }
+
     public void updateCrafting(String username, String craft) {
         UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
         switch (craft){
