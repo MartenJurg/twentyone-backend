@@ -21,23 +21,20 @@ public class UserInventory {
     @Size(min=3, max = 50)
     private String username;
 
-    @NotBlank
     private int paper;
 
-    @NotBlank
     private int watches;
 
-    @NotBlank
     private int phones;
 
-    @NotBlank
     private int gloves;
 
-    @NotBlank
     private int hats;
 
-    @NotBlank
     private int sweaters;
+
+    public UserInventory() {
+    }
 
     public UserInventory(@NotBlank @Size(min = 3, max = 50) String username) {
         this.username = username;

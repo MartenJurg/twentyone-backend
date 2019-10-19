@@ -11,22 +11,16 @@ public class UserInventoryDto {
     @Size(min=3, max = 50)
     private String username;
 
-    @NotBlank
     private int paper;
 
-    @NotBlank
     private int watches;
 
-    @NotBlank
     private int phones;
 
-    @NotBlank
     private int gloves;
 
-    @NotBlank
     private int hats;
 
-    @NotBlank
     private int sweaters;
 
     public UserInventoryDto(UserInventory userInventory) {

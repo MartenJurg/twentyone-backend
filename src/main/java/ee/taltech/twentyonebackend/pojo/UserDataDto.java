@@ -11,31 +11,22 @@ public class UserDataDto {
     @Size(min=3, max = 50)
     private String username;
 
-    @NotBlank
     private int cash;
 
-    @NotBlank
     private int house;
 
-    @NotBlank
     private int fame;
 
-    @NotBlank
     private int strength;
 
-    @NotBlank
     private int defence;
 
-    @NotBlank
     private int cooking;
 
-    @NotBlank
     private int thieving;
 
-    @NotBlank
     private int crafting;
 
-    @NotBlank
     private int beverage;
 
     public UserDataDto(UserData userData) {
@@ -43,7 +34,7 @@ public class UserDataDto {
         this.cash = userData.getCash();
         this.house = userData.getHouse();
         this.fame = userData.getFame();
-        this.strength = userData.getStrenght();
+        this.strength = userData.getStrength();
         this.defence = userData.getDefence();
         this.cooking = userData.getCooking();
         this.thieving = userData.getThieving();

@@ -5,11 +5,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "userdata", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
-                "username"
-        })
-})
 public class UserData {
 
     @Id
@@ -20,32 +15,26 @@ public class UserData {
     @Size(min=3, max = 50)
     private String username;
 
-    @NotBlank
     private int cash;
 
-    @NotBlank
     private int house;
 
-    @NotBlank
     private int fame;
 
-    @NotBlank
     private int strength;
 
-    @NotBlank
     private int defence;
 
-    @NotBlank
     private int cooking;
 
-    @NotBlank
     private int thieving;
 
-    @NotBlank
     private int crafting;
 
-    @NotBlank
     private int beverage;
+
+    public UserData() {
+    }
 
     public UserData(@NotBlank @Size(min = 3, max = 50) String username) {
         this.username = username;
@@ -76,7 +65,7 @@ public class UserData {
         return fame;
     }
 
-    public int getStrenght() {
+    public int getStrength() {
         return strength;
     }
 
