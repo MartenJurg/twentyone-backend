@@ -25,10 +25,13 @@ public class UserDataService {
         switch (dish){
             case "dumpling":
                 userData.setCash(userData.getCash() + 5);
+                save(userData);
             case "pasta":
                 userData.setCash(userData.getCash() + 20);
+                save(userData);
             case "duck":
                 userData.setCash(userData.getCash() + 50);
+                save(userData);
         }
     }
 
@@ -37,10 +40,13 @@ public class UserDataService {
         switch (craft){
             case "gloves":
                 userData.setCash(userData.getCash() + 5);
+                save(userData);
             case "hat":
                 userData.setCash(userData.getCash() + 20);
+                save(userData);
             case "sweater":
                 userData.setCash(userData.getCash() + 50);
+                save(userData);
         }
     }
 
@@ -49,10 +55,13 @@ public class UserDataService {
         switch (beverage){
             case "water":
                 userData.setCash(userData.getCash() + 5);
+                save(userData);
             case "applejuice":
                 userData.setCash(userData.getCash() + 20);
+                save(userData);
             case "gintonic":
                 userData.setCash(userData.getCash() + 50);
+                save(userData);
         }
     }
 
@@ -61,14 +70,17 @@ public class UserDataService {
         switch (thieving){
             case "paper":
                 userData.setCash(userData.getCash() + 5);
+                save(userData);
             case "watch":
                 userData.setCash(userData.getCash() + 20);
+                save(userData);
             case "phone":
                 userData.setCash(userData.getCash() + 50);
+                save(userData);
         }
     }
 
-    public void save(UserData userData) {
+    private void save(UserData userData) {
         userDataRepository.save(userData);
     }
 }
