@@ -29,7 +29,7 @@ public class CraftingController {
             throw new ValidationException();
         }
 
-        updateGameData.cook(craftForm.getUsername(), craftForm.getCraft());
+        updateGameData.craft(craftForm.getUsername(), craftForm.getCraft());
 
         return ResponseEntity.ok(new ResponseMessage("Craft was made"));
     }

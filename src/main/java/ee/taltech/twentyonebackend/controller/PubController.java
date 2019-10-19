@@ -28,7 +28,7 @@ public class PubController {
             throw new ValidationException();
         }
 
-        updateGameData.cook(beverageForm.getUsername(), beverageForm.getBeverage());
+        updateGameData.beverage(beverageForm.getUsername(), beverageForm.getBeverage());
 
         return ResponseEntity.ok(new ResponseMessage("Beverage was made and served!"));
     }

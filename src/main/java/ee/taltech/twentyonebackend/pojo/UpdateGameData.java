@@ -1,20 +1,27 @@
 package ee.taltech.twentyonebackend.pojo;
 
+import ee.taltech.twentyonebackend.service.UserDataService;
+
+import javax.annotation.Resource;
+
 public class UpdateGameData {
 
-    public boolean cook(String username, String dish){
-        return true;
+    @Resource
+    UserDataService userDataService;
+
+    public void cook(String username, String dish){
+        userDataService.updateCooking(username, dish);
     }
 
-    public boolean craft(String username, String craft) {
-        return true;
+    public void craft(String username, String craft) {
+        userDataService.updateCrafting(username, craft);
     }
 
-    public boolean beverage(String username, String drink) {
-        return true;
+    public void beverage(String username, String drink) {
+        userDataService.updateBeverage(username, drink);
     }
 
-    public boolean steal(String username, String item) {
-        return true;
+    public void steal(String username, String item) {
+        userDataService.updateThieving(username, item);
     }
 }
