@@ -2,9 +2,11 @@ package ee.taltech.twentyonebackend.pojo;
 
 import ee.taltech.twentyonebackend.service.UserDataService;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+@Component
 public class UpdateGameData {
 
     @Resource

@@ -1,6 +1,8 @@
 package ee.taltech.twentyonebackend.controller;
 
 import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
+import ee.taltech.twentyonebackend.model.UserData;
+import ee.taltech.twentyonebackend.model.UserInventory;
 import ee.taltech.twentyonebackend.pojo.RoleName;
 import ee.taltech.twentyonebackend.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
@@ -9,6 +11,8 @@ import ee.taltech.twentyonebackend.pojo.request.LoginForm;
 import ee.taltech.twentyonebackend.pojo.request.SignUpForm;
 import ee.taltech.twentyonebackend.pojo.response.JwtResponse;
 import ee.taltech.twentyonebackend.pojo.response.ResponseMessage;
+import ee.taltech.twentyonebackend.service.UserDataService;
+import ee.taltech.twentyonebackend.service.UserInventoryService;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +28,12 @@ public class AuthController {
 
 	@Resource
 	Authenticator authenticator;
+
+	@Resource
+	UserDataService userDataService;
+
+	@Resource
+	UserInventoryService userInventoryService;
 
 	@Resource
 	UserService userService;
@@ -72,6 +82,8 @@ public class AuthController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				signUpRequest.getPassword(), role);
 		userService.save(user);
+		userDataService.save(new UserData(user.getUsername()));
+		userInventoryService.save(new UserInventory(user.getUsername()));
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
 	}

@@ -80,7 +80,7 @@ public class UserDataService {
         }
     }
 
-    private void save(UserData userData) {
+    public void save(UserData userData) {
         userDataRepository.save(userData);
     }
 }

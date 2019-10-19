@@ -14,7 +14,7 @@ public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank
     @Size(min=3, max = 50)

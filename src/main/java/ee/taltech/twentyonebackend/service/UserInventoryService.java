@@ -44,7 +44,7 @@ public class UserInventoryService {
         }
     }
 
-    private void save(UserInventory userData) {
+    public void save(UserInventory userData) {
         userInventoryRepository.save(userData);
     }
 }
