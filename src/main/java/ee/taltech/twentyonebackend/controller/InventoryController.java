@@ -1,6 +1,5 @@
 package ee.taltech.twentyonebackend.controller;
 
-import ee.taltech.twentyonebackend.pojo.UserDataDto;
 import ee.taltech.twentyonebackend.pojo.UserInventoryDto;
 import ee.taltech.twentyonebackend.pojo.response.InventoryResponse;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
@@ -20,9 +19,10 @@ public class InventoryController {
     UserInventoryService userInventoryService;
 
     @PostMapping
-    public void fillDataResponse(String username) {
+    public InventoryResponse fillDataResponse(String username) {
         UserInventoryDto userInventoryDto = userInventoryService.getByUsername(username);
         InventoryResponse inventoryResponse = new InventoryResponse(userInventoryDto);
+        return inventoryResponse;
     }
 
 }

@@ -19,9 +19,10 @@ public class DataController {
     UserDataService userDataService;
 
     @PostMapping
-    public void fillDataResponse(String username) {
+    public DataResponse fillDataResponse(String username) {
         UserDataDto userDataDto = userDataService.getByUsername(username);
         DataResponse dataResponse = new DataResponse(userDataDto);
+        return dataResponse;
     }
 
 }
