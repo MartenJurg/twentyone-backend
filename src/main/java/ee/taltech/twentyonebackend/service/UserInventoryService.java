@@ -14,10 +14,37 @@ public class UserInventoryService {
     @Resource
     UserInventoryRepository userInventoryRepository;
 
-    public UserInventoryDto getByUsername(String username) throws UserNotFoundException {
-
+    public void updateCrafting(String username, String craft) {
         UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        switch (craft){
+            case "gloves":
+                userInventory.setGloves(userInventory.getGloves() + 1);
+                save(userInventory);
+            case "hat":
+                userInventory.setHats(userInventory.getHats() + 1);
+                save(userInventory);
+            case "sweater":
+                userInventory.setSweaters(userInventory.getSweaters() + 1);
+                save(userInventory);
+        }
+    }
 
-        return new UserInventoryDto(userInventory);
+    public void updateThieving(String username, String thieving) {
+        UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        switch (thieving){
+            case "paper":
+                userInventory.setPaper(userInventory.getPaper() + 1);
+                save(userInventory);
+            case "watch":
+                userInventory.setWatches(userInventory.getWatches() + 1);
+                save(userInventory);
+            case "phone":
+                userInventory.setPhones(userInventory.getPhones() + 1);
+                save(userInventory);
+        }
+    }
+
+    private void save(UserInventory userData) {
+        userInventoryRepository.save(userData);
     }
 }
