@@ -32,18 +32,19 @@ public class UserDataService {
                 userData.setCash(userData.getCash() + 5);
                 userData.setCookingxp(userData.getCookingxp() + 1);
                 userData.setCooking(userData.getCookingxp() / 50);
+                saveData(userData);
                 break;
             case "pasta":
                 userData.setCash(userData.getCash() + 20);
                 userData.setCookingxp(userData.getCookingxp() + 2);
                 userData.setCooking(userData.getCookingxp() / 50);
-                save(userData);
+                saveData(userData);
                 break;
             case "duck":
                 userData.setCash(userData.getCash() + 50);
                 userData.setCookingxp(userData.getCookingxp() + 3);
                 userData.setCooking(userData.getCookingxp() / 50);
-                save(userData);
+                saveData(userData);
                 break;
         }
     }
@@ -63,6 +64,7 @@ public class UserDataService {
             userData.setCash(userData.getCash() + 50);
             userInventory.setSweaters(userInventory.getSweaters() - 1);
         }
+        saveInventory(userInventory);
     }
 
     public void updateBeverage(String username, String beverage) {
@@ -72,19 +74,19 @@ public class UserDataService {
                 userData.setCash(userData.getCash() + 5);
                 userData.setBeveragexp(userData.getBeveragexp() + 1);
                 userData.setBeverage(userData.getBeveragexp() / 50);
-                save(userData);
+                saveData(userData);
                 break;
             case "applejuice":
                 userData.setCash(userData.getCash() + 20);
                 userData.setBeveragexp(userData.getBeveragexp() + 2);
                 userData.setBeverage(userData.getBeveragexp() / 50);
-                save(userData);
+                saveData(userData);
                 break;
             case "gintonic":
                 userData.setCash(userData.getCash() + 50);
                 userData.setBeveragexp(userData.getBeveragexp() + 3);
                 userData.setBeverage(userData.getBeveragexp() / 50);
-                save(userData);
+                saveData(userData);
                 break;
         }
     }
@@ -104,9 +106,25 @@ public class UserDataService {
             userData.setCash(userData.getCash() + 50);
             userInventory.setPhones(userInventory.getPhones() - 1);
         }
+        saveInventory(userInventory);
     }
 
-    public void save(UserData userData) {
+    public void updateFame(String username) {
+        UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        userData.setFame((userData.getBeverage()
+                + userData.getCooking()
+                + userData.getCrafting()
+                + userData.getThieving()
+                + userData.getDefence()
+                + userData.getStrength())
+                / 6);
+    }
+
+    public void saveData(UserData userData) {
         userDataRepository.save(userData);
+    }
+
+    public void saveInventory(UserInventory userInventory) {
+        userInventoryRepository.save(userInventory);
     }
 }

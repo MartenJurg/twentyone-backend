@@ -82,8 +82,8 @@ public class AuthController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				signUpRequest.getPassword(), role);
 		userService.save(user);
-		userDataService.save(new UserData(user.getUsername()));
-		userInventoryService.save(new UserInventory(user.getUsername()));
+		userDataService.saveData(new UserData(user.getUsername()));
+		userInventoryService.saveInventory(new UserInventory(user.getUsername()));
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
 	}

@@ -34,19 +34,19 @@ public class UserInventoryService {
                 userInventory.setGloves(userInventory.getGloves() + 1);
                 userData.setCraftingxp(userData.getCraftingxp() + 1);
                 userData.setCrafting(userData.getCraftingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
             case "hat":
                 userInventory.setHats(userInventory.getHats() + 1);
                 userData.setCraftingxp(userData.getCraftingxp() + 2);
                 userData.setCrafting(userData.getCraftingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
             case "sweater":
                 userInventory.setSweaters(userInventory.getSweaters() + 1);
                 userData.setCraftingxp(userData.getCraftingxp() + 3);
                 userData.setCrafting(userData.getCraftingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
         }
     }
@@ -59,24 +59,24 @@ public class UserInventoryService {
                 userInventory.setPaper(userInventory.getPaper() + 1);
                 userData.setThievingxp(userData.getThievingxp() + 1);
                 userData.setThieving(userData.getThievingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
             case "watch":
                 userInventory.setWatches(userInventory.getWatches() + 1);
                 userData.setThievingxp(userData.getThievingxp() + 2);
                 userData.setThieving(userData.getThievingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
             case "phone":
                 userInventory.setPhones(userInventory.getPhones() + 1);
                 userData.setThievingxp(userData.getThievingxp() +3);
                 userData.setThieving(userData.getThievingxp() / 50);
-                save(userInventory);
+                saveInventory(userInventory);
                 break;
         }
     }
 
-    public void save(UserInventory userData) {
-        userInventoryRepository.save(userData);
+    public void saveInventory(UserInventory userInventory) {
+        userInventoryRepository.save(userInventory);
     }
 }
