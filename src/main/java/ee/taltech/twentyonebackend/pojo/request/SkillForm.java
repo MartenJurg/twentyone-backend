@@ -1,15 +1,15 @@
 package ee.taltech.twentyonebackend.pojo.request;
 
-public class CraftForm {
+public class SkillForm {
 
     private String username;
-    private String craft;
+    private String skill;
 
     public String getUsername() {
         return username;
     }
 
-    public String getCraft() {
-        return craft;
+    public String getSkill() {
+        return skill;
     }
 }
