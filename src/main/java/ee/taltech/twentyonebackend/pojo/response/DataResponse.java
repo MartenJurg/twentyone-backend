@@ -26,7 +26,7 @@ public class DataResponse {
     }
 
     public DataResponse(UserDataDto userDataDto) {
-        this.cash = "5";
+        this.cash = "" + userDataDto.getCash();
         this.house = "" + userDataDto.getHouse();
         this.fame = "" + userDataDto.getFame();
         this.strength = "" + userDataDto.getStrenght();
