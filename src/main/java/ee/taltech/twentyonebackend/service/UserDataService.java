@@ -135,6 +135,11 @@ public class UserDataService {
         saveData(userData);
     }
 
+    public void upgradeHouse(String username) {
+        UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        userData.setHouse(userData.getHouse() + 1);
+    }
+
     public void saveData(UserData userData) {
         userDataRepository.save(userData);
     }

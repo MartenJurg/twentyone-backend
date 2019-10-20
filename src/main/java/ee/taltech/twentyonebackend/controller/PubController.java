@@ -24,7 +24,7 @@ public class PubController {
 
     @PostMapping("/serve")
     public ResponseEntity<?> authenticateUser(@RequestBody SkillForm skillForm) {
-        if (!dataAuthenticator.authenticateSkill(skillForm.getUsername(), skillForm.getSkill())) {
+        if (!dataAuthenticator.authenticateBeverage(skillForm.getUsername(), skillForm.getSkill())) {
             throw new ValidationException();
         }
 

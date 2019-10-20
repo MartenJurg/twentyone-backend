@@ -54,4 +54,8 @@ public class UpdateGameData {
         userDataService.updateDefence(username);
         userDataService.updateFame(username);
     }
+
+    public void houseUpgrade(String username) {
+
+    }
 }

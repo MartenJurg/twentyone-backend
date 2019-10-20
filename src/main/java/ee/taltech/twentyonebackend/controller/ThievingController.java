@@ -24,7 +24,7 @@ public class ThievingController {
 
     @PostMapping("/steal")
     public ResponseEntity<?> authenticateUser(@RequestBody SkillForm skillForm) {
-        if (!dataAuthenticator.authenticateSkill(skillForm.getUsername(), skillForm.getSkill())) {
+        if (!dataAuthenticator.authenticateThieving(skillForm.getUsername(), skillForm.getSkill())) {
             throw new ValidationException();
         }
 
