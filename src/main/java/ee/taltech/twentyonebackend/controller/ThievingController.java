@@ -28,8 +28,16 @@ public class ThievingController {
             throw new ValidationException();
         }
 
-        updateGameData.beverage(thievingForm.getUsername(), thievingForm.getItem());
+        updateGameData.steal(thievingForm.getUsername(), thievingForm.getItem());
 
         return ResponseEntity.ok(new ResponseMessage("Successfully stole an item."));
+    }
+
+    @PostMapping("/sell")
+    public ResponseEntity<?> sellStolenItems(@RequestBody String username) {
+
+        updateGameData.sellThievingItems(username);
+
+        return ResponseEntity.ok(new ResponseMessage("Successfully sold stolen items."));
     }
 }

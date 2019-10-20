@@ -32,4 +32,12 @@ public class CraftingController {
 
         return ResponseEntity.ok(new ResponseMessage("Craft was made"));
     }
+
+    @PostMapping("/sell")
+    public ResponseEntity<?> sellCrafts(@RequestBody String username) {
+
+        updateGameData.sellCrafts(username);
+
+        return ResponseEntity.ok(new ResponseMessage("Crafts were sold"));
+    }
 }
