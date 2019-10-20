@@ -5,6 +5,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "userdata", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+        })
+})
 public class UserData {
 
     @Id

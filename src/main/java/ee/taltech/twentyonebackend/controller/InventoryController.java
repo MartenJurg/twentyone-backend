@@ -3,10 +3,8 @@ package ee.taltech.twentyonebackend.controller;
 import ee.taltech.twentyonebackend.pojo.UserInventoryDto;
 import ee.taltech.twentyonebackend.pojo.response.InventoryResponse;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,10 +17,10 @@ public class InventoryController {
     UserInventoryService userInventoryService;
 
     @PostMapping
-    public InventoryResponse fillDataResponse(String username) {
+    public ResponseEntity<?> fillDataResponse(@RequestBody String username) {
         UserInventoryDto userInventoryDto = userInventoryService.getByUsername(username);
         InventoryResponse inventoryResponse = new InventoryResponse(userInventoryDto);
-        return inventoryResponse;
+        return ResponseEntity.ok(inventoryResponse);
     }
 
 }
