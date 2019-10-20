@@ -30,4 +30,12 @@ public class UpdateGameData {
     public void steal(String username, String item) {
         userInventoryService.updateThieving(username, item);
     }
+
+    public void sellCrafts(String username) {
+        userDataService.updateCrafting(username);
+    }
+
+    public void sellThievingItems(String username) {
+        userDataService.updateThieving(username);
+    }
 }
