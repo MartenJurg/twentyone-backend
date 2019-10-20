@@ -12,13 +12,21 @@ import javax.annotation.Resource;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/boxing")
-public class StrengthController {
+public class BoxingController {
 
     @Resource
     UpdateGameData updateGameData;
 
+    @PostMapping("/defence")
+    public ResponseEntity<?> authenticateDefence(@RequestBody SkillForm skillForm) {
+
+        updateGameData.trainDefence(skillForm.getUsername());
+
+        return ResponseEntity.ok(new ResponseMessage("Gained more defence"));
+    }
+
     @PostMapping("/strength")
-    public ResponseEntity<?> authenticateUser(@RequestBody SkillForm skillForm) {
+    public ResponseEntity<?> authenticateStrength(@RequestBody SkillForm skillForm) {
 
         updateGameData.trainStrength(skillForm.getUsername());
 
