@@ -26,12 +26,15 @@ public class UserDataService {
             case "dumpling":
                 userData.setCash(userData.getCash() + 5);
                 save(userData);
+                break;
             case "pasta":
                 userData.setCash(userData.getCash() + 20);
                 save(userData);
+                break;
             case "duck":
                 userData.setCash(userData.getCash() + 50);
                 save(userData);
+                break;
         }
     }
 
@@ -41,12 +44,15 @@ public class UserDataService {
             case "gloves":
                 userData.setCash(userData.getCash() + 5);
                 save(userData);
+                break;
             case "hat":
                 userData.setCash(userData.getCash() + 20);
                 save(userData);
+                break;
             case "sweater":
                 userData.setCash(userData.getCash() + 50);
                 save(userData);
+                break;
         }
     }
 
@@ -56,12 +62,15 @@ public class UserDataService {
             case "water":
                 userData.setCash(userData.getCash() + 5);
                 save(userData);
+                break;
             case "applejuice":
                 userData.setCash(userData.getCash() + 20);
                 save(userData);
+                break;
             case "gintonic":
                 userData.setCash(userData.getCash() + 50);
                 save(userData);
+                break;
         }
     }
 
@@ -71,12 +80,15 @@ public class UserDataService {
             case "paper":
                 userData.setCash(userData.getCash() + 5);
                 save(userData);
+                break;
             case "watch":
                 userData.setCash(userData.getCash() + 20);
                 save(userData);
+                break;
             case "phone":
                 userData.setCash(userData.getCash() + 50);
                 save(userData);
+                break;
         }
     }
 

@@ -27,12 +27,15 @@ public class UserInventoryService {
             case "gloves":
                 userInventory.setGloves(userInventory.getGloves() + 1);
                 save(userInventory);
+                break;
             case "hat":
                 userInventory.setHats(userInventory.getHats() + 1);
                 save(userInventory);
+                break;
             case "sweater":
                 userInventory.setSweaters(userInventory.getSweaters() + 1);
                 save(userInventory);
+                break;
         }
     }
 
@@ -42,12 +45,15 @@ public class UserInventoryService {
             case "paper":
                 userInventory.setPaper(userInventory.getPaper() + 1);
                 save(userInventory);
+                break;
             case "watch":
                 userInventory.setWatches(userInventory.getWatches() + 1);
                 save(userInventory);
+                break;
             case "phone":
                 userInventory.setPhones(userInventory.getPhones() + 1);
                 save(userInventory);
+                break;
         }
     }
 
