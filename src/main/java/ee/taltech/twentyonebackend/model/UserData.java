@@ -38,6 +38,18 @@ public class UserData {
 
     private int beverage;
 
+    private int cookingxp;
+
+    private int thievingxp;
+
+    private int craftingxp;
+
+    private int beveragexp;
+
+    private int defencexp;
+
+    private int strenghtxp;
+
     public UserData() {
     }
 
@@ -52,10 +64,40 @@ public class UserData {
         this.house = 0;
         this.thieving = 0;
         this.strength = 0;
+        this.cookingxp = 0;
+        this.thievingxp = 0;
+        this.craftingxp = 0;
+        this.beveragexp = 0;
+        this.defencexp = 0;
+        this.strenghtxp = 0;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public int getCookingxp() {
+        return cookingxp;
+    }
+
+    public int getThievingxp() {
+        return thievingxp;
+    }
+
+    public int getCraftingxp() {
+        return craftingxp;
+    }
+
+    public int getBeveragexp() {
+        return beveragexp;
+    }
+
+    public int getDefencexp() {
+        return defencexp;
+    }
+
+    public int getStrenghtxp() {
+        return strenghtxp;
     }
 
     public int getCash() {
@@ -128,5 +170,37 @@ public class UserData {
 
     public void setBeverage(int beverage) {
         this.beverage = beverage;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setCookingxp(int cookingxp) {
+        this.cookingxp = cookingxp;
+    }
+
+    public void setThievingxp(int thievingxp) {
+        this.thievingxp = thievingxp;
+    }
+
+    public void setCraftingxp(int craftingxp) {
+        this.craftingxp = craftingxp;
+    }
+
+    public void setBeveragexp(int beveragexp) {
+        this.beveragexp = beveragexp;
+    }
+
+    public void setDefencexp(int defencexp) {
+        this.defencexp = defencexp;
+    }
+
+    public void setStrenghtxp(int strenghtxp) {
+        this.strenghtxp = strenghtxp;
     }
 }

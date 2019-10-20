@@ -25,14 +25,19 @@ public class UserDataService {
         switch (dish){
             case "dumpling":
                 userData.setCash(userData.getCash() + 5);
-                save(userData);
+                userData.setCookingxp(userData.getCookingxp() + 1);
+                userData.setCooking(userData.getCookingxp() / 50);
                 break;
             case "pasta":
                 userData.setCash(userData.getCash() + 20);
+                userData.setCookingxp(userData.getCookingxp() + 2);
+                userData.setCooking(userData.getCookingxp() / 50);
                 save(userData);
                 break;
             case "duck":
                 userData.setCash(userData.getCash() + 50);
+                userData.setCookingxp(userData.getCookingxp() + 3);
+                userData.setCooking(userData.getCookingxp() / 50);
                 save(userData);
                 break;
         }
@@ -61,14 +66,20 @@ public class UserDataService {
         switch (beverage){
             case "water":
                 userData.setCash(userData.getCash() + 5);
+                userData.setBeveragexp(userData.getBeveragexp() + 1);
+                userData.setBeverage(userData.getBeveragexp() / 50);
                 save(userData);
                 break;
             case "applejuice":
                 userData.setCash(userData.getCash() + 20);
+                userData.setBeveragexp(userData.getBeveragexp() + 2);
+                userData.setBeverage(userData.getBeveragexp() / 50);
                 save(userData);
                 break;
             case "gintonic":
                 userData.setCash(userData.getCash() + 50);
+                userData.setBeveragexp(userData.getBeveragexp() + 3);
+                userData.setBeverage(userData.getBeveragexp() / 50);
                 save(userData);
                 break;
         }
