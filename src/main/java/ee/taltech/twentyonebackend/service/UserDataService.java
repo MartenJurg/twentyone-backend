@@ -52,15 +52,15 @@ public class UserDataService {
     public void updateCrafting(String username) {
         UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
         UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
-        for (int i = 0; i < userInventory.getGloves(); i++) {
+        for (int i = 0; i != userInventory.getGloves();) {
             userData.setCash(userData.getCash() + 5);
             userInventory.setGloves(userInventory.getGloves() - 1);
         }
-        for (int i = 0; i < userInventory.getHats(); i++) {
+        for (int i = 0; i != userInventory.getHats();) {
             userData.setCash(userData.getCash() + 20);
             userInventory.setHats(userInventory.getHats() - 1);
         }
-        for (int i = 0; i < userInventory.getSweaters(); i++) {
+        for (int i = 0; i != userInventory.getSweaters();) {
             userData.setCash(userData.getCash() + 50);
             userInventory.setSweaters(userInventory.getSweaters() - 1);
         }
@@ -108,15 +108,15 @@ public class UserDataService {
     public void updateThieving(String username) {
         UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
         UserInventory userInventory = userInventoryRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
-        for (int i = 0; i < userInventory.getPaper(); i++) {
+        for (int i = 0; i != userInventory.getPaper();) {
             userData.setCash(userData.getCash() + 5);
             userInventory.setPaper(userInventory.getPaper() - 1);
         }
-        for (int i = 0; i < userInventory.getHats(); i++) {
+        for (int i = 0; i != userInventory.getHats();) {
             userData.setCash(userData.getCash() + 20);
             userInventory.setWatches(userInventory.getWatches() - 1);
         }
-        for (int i = 0; i < userInventory.getPhones(); i++) {
+        for (int i = 0; i != userInventory.getPhones();) {
             userData.setCash(userData.getCash() + 50);
             userInventory.setPhones(userInventory.getPhones() - 1);
         }
