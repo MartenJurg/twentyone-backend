@@ -45,7 +45,13 @@ public class UpdateGameData {
         userDataService.updateFame(username);
     }
 
-    private void updateFame(String username) {
+    public void trainStrength(String username, String train) {
+        userDataService.updateStrength(username);
+        userDataService.updateFame(username);
+    }
+
+    public void trainDefence(String username) {
+        userDataService.updateDefence(username);
         userDataService.updateFame(username);
     }
 }
