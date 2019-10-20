@@ -3,10 +3,8 @@ package ee.taltech.twentyonebackend.controller;
 import ee.taltech.twentyonebackend.pojo.UserDataDto;
 import ee.taltech.twentyonebackend.pojo.response.DataResponse;
 import ee.taltech.twentyonebackend.service.UserDataService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -18,11 +16,11 @@ public class DataController {
     @Resource
     UserDataService userDataService;
 
-    @PostMapping
-    public DataResponse fillDataResponse(String username) {
+    @PostMapping("/data")
+    public ResponseEntity<?> fillDataResponse(@RequestBody String username) {
         UserDataDto userDataDto = userDataService.getByUsername(username);
         DataResponse dataResponse = new DataResponse(userDataDto);
-        return dataResponse;
+        return ResponseEntity.ok(dataResponse);
     }
 
 }
