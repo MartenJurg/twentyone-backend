@@ -132,6 +132,7 @@ public class UserDataService {
                 + userData.getDefence()
                 + userData.getStrength())
                 / 6);
+        saveData(userData);
     }
 
     public void saveData(UserData userData) {
