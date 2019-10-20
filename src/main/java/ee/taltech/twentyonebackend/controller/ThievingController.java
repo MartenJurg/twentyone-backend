@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/steal")
+@RequestMapping("/stealing")
 public class ThievingController {
 
     @Resource
@@ -22,7 +22,7 @@ public class ThievingController {
     @Resource
     UpdateGameData updateGameData;
 
-    @PostMapping("/serve")
+    @PostMapping("/steal")
     public ResponseEntity<?> authenticateUser(@RequestBody SkillForm skillForm) {
         if (!dataAuthenticator.authenticateSkill(skillForm.getUsername(), skillForm.getSkill())) {
             throw new ValidationException();
