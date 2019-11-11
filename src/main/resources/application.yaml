@@ -7,7 +7,7 @@ spring:
   jackson:
     default-property-inclusion: non_null
   jpa:
-    generate-ddl: true
+#    generate-ddl: true
     properties:
       hibernate:
         jdbc:
