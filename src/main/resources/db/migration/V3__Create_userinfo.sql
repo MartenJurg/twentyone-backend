@@ -4,5 +4,5 @@ CREATE TABLE userinfo(
   username VARCHAR(50) ,
   email VARCHAR(50) ,
   password VARCHAR(100) ,
-  roleName VARCHAR(50)
+  role_name VARCHAR(50)
 );

@@ -9,7 +9,7 @@ import ee.taltech.twentyonebackend.pojo.RoleName;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
+@Table(name = "userinfo", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
                 "username"
         }),
