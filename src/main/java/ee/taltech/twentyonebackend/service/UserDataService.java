@@ -69,15 +69,15 @@ public class UserDataService {
 
     public void updateStrength(String username) {
         UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
-        userData.setStrenght(userData.getStrenghtxp() / 50);
         userData.setStrenghtxp(userData.getStrenghtxp() + 2);
+        userData.setStrenght(userData.getStrenghtxp() / 50);
         saveData(userData);
     }
 
     public void updateDefence(String username) {
         UserData userData = userDataRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
-        userData.setDefence(userData.getDefencexp() / 50);
         userData.setDefencexp(userData.getDefencexp() + 2);
+        userData.setDefence(userData.getDefencexp() / 50);
         saveData(userData);
     }
 

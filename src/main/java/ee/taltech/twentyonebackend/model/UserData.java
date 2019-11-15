@@ -7,47 +7,30 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "userdata", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-                "username"
-        })
+                "username"})
 })
 public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank
-    @Size(min=3, max = 50)
+    @Size(min = 3, max = 50)
     private String username;
-
     private int cash;
-
     private int house;
-
     private int fame;
-
     private int strength;
-
     private int defence;
-
     private int cooking;
-
     private int thieving;
-
     private int crafting;
-
     private int beverage;
-
     private int cookingxp;
-
     private int thievingxp;
-
     private int craftingxp;
-
     private int beveragexp;
-
     private int defencexp;
-
     private int strenghtxp;
 
     public UserData() {
@@ -138,10 +121,6 @@ public class UserData {
 
     public void setCash(int cash) {
         this.cash = cash;
-    }
-
-    public void setHouse(int house) {
-        this.house = house;
     }
 
     public void setFame(int fame) {

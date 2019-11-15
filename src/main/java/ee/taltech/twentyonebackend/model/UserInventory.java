@@ -8,8 +8,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "userinventory", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-                "username"
-        })
+                "username"})
 })
 public class UserInventory {
 
@@ -18,19 +17,13 @@ public class UserInventory {
     private Long id;
 
     @NotBlank
-    @Size(min=3, max = 50)
+    @Size(min = 3, max = 50)
     private String username;
-
     private int paper;
-
     private int watches;
-
     private int phones;
-
     private int gloves;
-
     private int hats;
-
     private int sweaters;
 
     public UserInventory() {
