@@ -2,6 +2,7 @@ package ee.taltech.twentyonebackend.pojo;
 
 import ee.taltech.twentyonebackend.service.UserDataService;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
+import ee.taltech.twentyonebackend.service.UserSellingService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -14,6 +15,9 @@ public class UpdateGameData {
 
     @Resource
     UserInventoryService userInventoryService;
+
+    @Resource
+    UserSellingService userSellingService;
 
     public void cook(String username, String dish){
         userDataService.updateCooking(username, dish);
@@ -35,14 +39,8 @@ public class UpdateGameData {
         userDataService.updateFame(username);
     }
 
-    public void sellCrafts(String username) {
-        userDataService.updateCrafting(username);
-        userDataService.updateFame(username);
-    }
-
-    public void sellThievingItems(String username) {
-        userDataService.updateThieving(username);
-        userDataService.updateFame(username);
+    public void sellAllItems(String username) {
+        userSellingService.updateStreets(username);
     }
 
     public void trainStrength(String username) {

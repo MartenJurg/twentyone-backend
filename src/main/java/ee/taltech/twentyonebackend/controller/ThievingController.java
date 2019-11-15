@@ -36,8 +36,8 @@ public class ThievingController {
     @PostMapping("/sell")
     public ResponseEntity<?> sellStolenItems(@RequestBody String username) {
 
-        updateGameData.sellThievingItems(username);
+        updateGameData.sellAllItems(username);
 
-        return ResponseEntity.ok(new ResponseMessage("Successfully sold stolen items."));
+        return ResponseEntity.ok(new ResponseMessage("Successfully sold all items."));
     }
 }
