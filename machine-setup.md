@@ -202,3 +202,10 @@ copy paste your postgres code there
 after that restart backend:   
 sudo systemctl daemon-reload  
 sudo service twentyone restart  
+
+Go to backend service:   
+cd /etc/systemd/system   
+nano twentyone.service   
+change ExecStart to:   
+ExecStart=/usr/bin/java -jar twentyone.jar --spring.config.location=custom.yaml
+
