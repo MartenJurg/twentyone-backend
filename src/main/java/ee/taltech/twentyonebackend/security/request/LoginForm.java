@@ -1,4 +1,4 @@
-package ee.taltech.twentyonebackend.pojo.request;
+package ee.taltech.twentyonebackend.security.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

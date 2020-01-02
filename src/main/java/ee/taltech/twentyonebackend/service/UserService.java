@@ -1,8 +1,8 @@
 package ee.taltech.twentyonebackend.service;
 
 import ee.taltech.twentyonebackend.exception.UserNotFoundException;
-import ee.taltech.twentyonebackend.model.User;
-import ee.taltech.twentyonebackend.pojo.UserDto;
+import ee.taltech.twentyonebackend.security.model.User;
+import ee.taltech.twentyonebackend.security.pojo.UserDto;
 import ee.taltech.twentyonebackend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

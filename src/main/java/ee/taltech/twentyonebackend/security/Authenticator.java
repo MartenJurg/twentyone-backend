@@ -1,5 +1,7 @@
-package ee.taltech.twentyonebackend.pojo;
+package ee.taltech.twentyonebackend.security;
 
+import ee.taltech.twentyonebackend.security.pojo.UserDto;
+import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.stereotype.Component;
 

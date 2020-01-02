@@ -1,4 +1,4 @@
-package ee.taltech.twentyonebackend.model;
+package ee.taltech.twentyonebackend.security.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

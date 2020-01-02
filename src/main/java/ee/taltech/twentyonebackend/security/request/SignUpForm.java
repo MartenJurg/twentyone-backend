@@ -1,4 +1,4 @@
-package ee.taltech.twentyonebackend.pojo.request;
+package ee.taltech.twentyonebackend.security.request;
 
 import javax.validation.constraints.*;
 
@@ -21,6 +21,9 @@ public class SignUpForm {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    public SignUpForm() {
+    }
 
     public String getName() {
         return name;

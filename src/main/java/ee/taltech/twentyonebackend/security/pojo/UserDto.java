@@ -1,6 +1,7 @@
-package ee.taltech.twentyonebackend.pojo;
+package ee.taltech.twentyonebackend.security.pojo;
 
-import ee.taltech.twentyonebackend.model.User;
+import ee.taltech.twentyonebackend.pojo.RoleName;
+import ee.taltech.twentyonebackend.security.model.User;
 
 public class UserDto {
 

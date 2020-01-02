@@ -1,6 +1,6 @@
 package ee.taltech.twentyonebackend.repository;
 
-import ee.taltech.twentyonebackend.model.User;
+import ee.taltech.twentyonebackend.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,6 @@
-package ee.taltech.twentyonebackend.controller;
+package ee.taltech.twentyonebackend.security.controller;
 
-import ee.taltech.twentyonebackend.model.User;
-import ee.taltech.twentyonebackend.pojo.UserDto;
+import ee.taltech.twentyonebackend.security.model.User;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

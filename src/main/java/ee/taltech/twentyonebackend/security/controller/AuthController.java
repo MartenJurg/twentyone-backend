@@ -1,16 +1,16 @@
-package ee.taltech.twentyonebackend.controller;
+package ee.taltech.twentyonebackend.security.controller;
 
 import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
 import ee.taltech.twentyonebackend.model.UserData;
 import ee.taltech.twentyonebackend.model.UserInventory;
 import ee.taltech.twentyonebackend.pojo.RoleName;
-import ee.taltech.twentyonebackend.model.User;
+import ee.taltech.twentyonebackend.security.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
-import ee.taltech.twentyonebackend.pojo.Authenticator;
-import ee.taltech.twentyonebackend.pojo.request.LoginForm;
-import ee.taltech.twentyonebackend.pojo.request.SignUpForm;
 import ee.taltech.twentyonebackend.pojo.response.JwtResponse;
 import ee.taltech.twentyonebackend.pojo.response.ResponseMessage;
+import ee.taltech.twentyonebackend.security.Authenticator;
+import ee.taltech.twentyonebackend.security.request.LoginForm;
+import ee.taltech.twentyonebackend.security.request.SignUpForm;
 import ee.taltech.twentyonebackend.service.UserDataService;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
 import ee.taltech.twentyonebackend.service.UserService;
@@ -49,7 +49,8 @@ public class AuthController {
         }
 
         // actually has to return authorities.
-		return ResponseEntity.ok(new JwtResponse(loginRequest.getUsername(), authentication));
+		RoleName roleName = userService.getByUsername(loginRequest.getUsername()).getRoleName();
+		return ResponseEntity.ok(new JwtResponse(loginRequest.getUsername(), authentication, roleName.toString()));
 	}
 
 	@PostMapping("/signup")
