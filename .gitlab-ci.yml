@@ -26,6 +26,6 @@ deploy twentyone:
     - twentyone
   script:
     - mkdir -p ~/api-deployment
-    - rm -rf ~/api-deployment/*
+    - rm -rf ~/api-deployment/twentyone.jar
     - cp -r build/libs/. ~/api-deployment
     - sudo service twentyone restart
