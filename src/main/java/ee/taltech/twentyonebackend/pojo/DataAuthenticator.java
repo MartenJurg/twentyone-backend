@@ -1,6 +1,5 @@
 package ee.taltech.twentyonebackend.pojo;
 
-import ee.taltech.twentyonebackend.model.UserInventory;
 import ee.taltech.twentyonebackend.service.UserDataService;
 import ee.taltech.twentyonebackend.service.UserInventoryService;
 import org.springframework.stereotype.Component;
@@ -11,22 +10,21 @@ import java.util.Map;
 @Component
 public class DataAuthenticator {
 
-    private Map<String, Integer> skillData = new HashMap<>();
+    private Map<String, Integer> skillData = new HashMap<>(){{
+        this.put("dumpling", 0);
+        this.put("pasta", 10);
+        this.put("duck", 30);
+        this.put("gloves", 0);
+        this.put("hat", 10);
+        this.put("sweater", 30);
+        this.put("water", 0);
+        this.put("applejuice", 10);
+        this.put("gintonic", 30);
+        this.put("paper", 0);
+        this.put("watch", 10);
+        this.put("phone", 30);
+    }};
 
-    private void makeSkillDataDict(){
-        skillData.put("dumpling", 0);
-        skillData.put("pasta", 10);
-        skillData.put("duck", 30);
-        skillData.put("gloves", 0);
-        skillData.put("hat", 10);
-        skillData.put("sweater", 30);
-        skillData.put("water", 0);
-        skillData.put("applejuice", 10);
-        skillData.put("gintonic", 30);
-        skillData.put("paper", 0);
-        skillData.put("watch", 10);
-        skillData.put("phone", 30);
-    }
     @Resource
     UserDataService userDataService;
 
@@ -34,31 +32,26 @@ public class DataAuthenticator {
     UserInventoryService userInventoryService;
 
     public boolean authenticateCooking(String username, String skillName){
-        makeSkillDataDict();
         UserDataDto userDataDto = userDataService.getByUsername(username);
         return userDataDto.getCooking() >= skillData.get(skillName);
     }
 
     public boolean authenticateCrafting(String username, String skillName) {
-        makeSkillDataDict();
         UserDataDto userDataDto = userDataService.getByUsername(username);
         return userDataDto.getCrafting() >= skillData.get(skillName);
     }
 
     public boolean authenticateThieving(String username, String skillName) {
-        makeSkillDataDict();
         UserDataDto userDataDto = userDataService.getByUsername(username);
         return userDataDto.getThieving() >= skillData.get(skillName);
     }
 
     public boolean authenticateBeverage(String username, String skillName) {
-        makeSkillDataDict();
         UserDataDto userDataDto = userDataService.getByUsername(username);
         return userDataDto.getBeverage() >= skillData.get(skillName);
     }
 
     public boolean authenticateBuilding(String username) {
-        makeSkillDataDict();
         UserDataDto userDataDto = userDataService.getByUsername(username);
         UserInventoryDto userInventoryDto = userInventoryService.getByUsername(username);
         switch (userDataDto.getHouse()) {
