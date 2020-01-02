@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/users")
+@RequestMapping({"/users", "/hackers"})
 public class UserController {
 
     @Resource

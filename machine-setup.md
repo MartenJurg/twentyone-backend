@@ -165,7 +165,7 @@ Edit heroes file, add a rule for nginx to forward to index.html if it doesn't ha
 import GPG key and add postresql12 repo   
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -   
 
-add repo contents to the system
+add repo contents to the system     
 echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list   
 
 install postgresql12    
@@ -202,3 +202,10 @@ copy paste your postgres code there
 after that restart backend:   
 sudo systemctl daemon-reload  
 sudo service twentyone restart  
+
+Go to backend service:   
+cd /etc/systemd/system   
+nano twentyone.service   
+change ExecStart to:   
+ExecStart=/usr/bin/java -jar twentyone.jar --spring.config.location=custom.yaml
+
