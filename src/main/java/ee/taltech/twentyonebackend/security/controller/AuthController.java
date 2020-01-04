@@ -41,8 +41,9 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginForm loginRequest) {
+		String password = new BCryptPasswordEncoder().encode(loginRequest.getPassword());
 		boolean authentication = authenticator.authenticate(
-				new UsernamePasswordDto(loginRequest.getUsername(), loginRequest.getPassword())
+				new UsernamePasswordDto(loginRequest.getUsername(), password)
 		);
 
 		if (!authentication) {
