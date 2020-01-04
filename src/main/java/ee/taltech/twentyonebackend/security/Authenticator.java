@@ -3,6 +3,7 @@ package ee.taltech.twentyonebackend.security;
 import ee.taltech.twentyonebackend.security.pojo.UserDto;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
 import ee.taltech.twentyonebackend.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -20,6 +21,6 @@ public class Authenticator {
         String username = usernamePasswordDto.getUsername();
         String password = usernamePasswordDto.getPassword();
         UserDto user = userService.getByUsername(username);
-        return (username.equals(user.getUsername()) && password.equals(user.getPassword()));
+        return (username.equals(user.getUsername()) && new BCryptPasswordEncoder().matches(password,user.getPassword()));
     }
 }
