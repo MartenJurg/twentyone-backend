@@ -6,10 +6,10 @@ This game might get some updates in the future and become the greatest.
 ## Getting Started
 
 Installation guide can be found at:
-[Installation  guide][https://gitlab.cs.ttu.ee/mjurge/twentyone-backend/blob/master/machine-setup.md]
+[Installation  guide](https://gitlab.cs.ttu.ee/mjurge/twentyone-backend/blob/master/machine-setup.md)
 
 ### Built with
 
-[Spring boot][https://spring.io/projects/spring-boot] - the framework used.
-[Gradle][https://gradle.org/] - dependency manager.
-[Postgresql][https://www.postgresql.org/] - the database used.
+* [Spring boot](https://spring.io/projects/spring-boot) - the framework used.
+* [Gradle](https://gradle.org/) - dependency manager.
+* [Postgresql](https://www.postgresql.org/) - the database used.
