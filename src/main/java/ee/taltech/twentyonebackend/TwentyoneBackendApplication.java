@@ -1,8 +1,8 @@
 package ee.taltech.twentyonebackend;
 
 import ee.taltech.twentyonebackend.pojo.RoleName;
+import ee.taltech.twentyonebackend.repository.UserRepository;
 import ee.taltech.twentyonebackend.security.model.User;
-import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,16 +19,17 @@ public class TwentyoneBackendApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initUser(UserService userservice) {
+	public CommandLineRunner initUser(UserRepository userRepository) {
 		return (args) -> {
-			 User user = new User(
-			 		"root",
-					 "admin",
-					 "admin@hotmail.com",
-					 "admin",
-					 RoleName.ROLE_ADMIN
-			 );
-			 userservice.save(user);
+			User user = new User(
+					"admin1",
+					"admin1",
+					"admin@hotmail.com",
+					"admin1",
+					RoleName.ROLE_ADMIN
+			);
+			userRepository.save(user);
 		};
 	}
+
 }
