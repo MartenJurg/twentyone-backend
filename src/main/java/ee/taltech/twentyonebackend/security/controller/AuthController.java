@@ -16,6 +16,7 @@ import ee.taltech.twentyonebackend.service.UserInventoryService;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -80,8 +81,10 @@ public class AuthController {
 		}
 
 		// Creating user's account
-		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				signUpRequest.getPassword(), role);
+        String password = new BCryptPasswordEncoder().encode(signUpRequest.getPassword());
+
+        User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
+				password, role);
 		userService.save(user);
 		userDataService.saveData(new UserData(user.getUsername()));
 		userInventoryService.saveInventory(new UserInventory(user.getUsername()));
