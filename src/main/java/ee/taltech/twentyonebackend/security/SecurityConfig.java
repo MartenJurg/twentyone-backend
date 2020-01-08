@@ -18,11 +18,11 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin2").password(new BCryptPasswordEncoder().encode("admin2"));
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("admin2").password(new BCryptPasswordEncoder().encode("admin2"));
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
