@@ -47,7 +47,7 @@ public class MyUserDetailsService implements UserDetailsService {
      * if user is admin, then they get all the roles in application
      */
     private Stream<RoleName> getRoles(User user) {
-        if (user.getRoleName().equals(RoleName.ADMIN)) {
+        if (user.getRoleName().equals(RoleName.ROLE_ADMIN)) {
             return Arrays.stream(RoleName.values());
         }
         return Stream.of(user.getRoleName());
