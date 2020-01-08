@@ -6,7 +6,7 @@ import ee.taltech.twentyonebackend.model.UserInventory;
 import ee.taltech.twentyonebackend.pojo.RoleName;
 import ee.taltech.twentyonebackend.security.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
-import ee.taltech.twentyonebackend.pojo.response.JwtResponse;
+import ee.taltech.twentyonebackend.pojo.response.UserResponse;
 import ee.taltech.twentyonebackend.pojo.response.ResponseMessage;
 import ee.taltech.twentyonebackend.security.Authenticator;
 import ee.taltech.twentyonebackend.security.request.LoginForm;
@@ -51,7 +51,7 @@ public class AuthController {
 
         // actually has to return authorities.
 		RoleName roleName = userService.getByUsername(loginRequest.getUsername()).getRoleName();
-		return ResponseEntity.ok(new JwtResponse(loginRequest.getUsername(), authentication, roleName.toString()));
+		return ResponseEntity.ok(new UserResponse(loginRequest.getUsername(),"MIDAIGANES" , roleName.toString()));
 	}
 
 	@PostMapping("/signup")
