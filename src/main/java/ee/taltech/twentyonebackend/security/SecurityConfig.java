@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -27,9 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/signup").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/logout").permitAll()
+                .antMatchers("/auth/signup").permitAll()
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/auth/logout").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutUrl("/logout");
