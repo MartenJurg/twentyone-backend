@@ -85,13 +85,13 @@ public class AuthController {
 
 		switch (strRole) {
 			case "admin":
-				role = RoleName.ROLE_ADMIN;
+				role = RoleName.ADMIN;
 				break;
 			case "pm":
-				role = RoleName.ROLE_PM;
+				role = RoleName.PM;
 				break;
 			default:
-				role = RoleName.ROLE_USER;
+				role = RoleName.USER;
 		}
 
 		// Creating user's account
