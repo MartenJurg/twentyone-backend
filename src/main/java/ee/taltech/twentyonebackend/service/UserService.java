@@ -4,10 +4,13 @@ import ee.taltech.twentyonebackend.exception.UserNotFoundException;
 import ee.taltech.twentyonebackend.security.model.User;
 import ee.taltech.twentyonebackend.security.pojo.UserDto;
 import ee.taltech.twentyonebackend.repository.UserRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+import static java.lang.String.format;
 
 @Service
 public class UserService {
@@ -17,7 +20,10 @@ public class UserService {
 
     public UserDto getByUsername(String username) throws UserNotFoundException {
 
-        User user = userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        User user = userRepository.findByUsername(username);
+        if (user.toString().length() <= 0) {
+            throw new UsernameNotFoundException(format("username not found: %s", username));
+        }
 
         return new UserDto(user);
     }

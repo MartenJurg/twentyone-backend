@@ -21,7 +21,14 @@ public class UserDto {
         this.username = user.getUsername();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.roleName = user.getRole();
+        this.roleName = user.getRoleName();
+    }
+
+    public UserDto(Long id, String username, String password, RoleName roleName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roleName = roleName;
     }
 
     public String getName() {
