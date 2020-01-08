@@ -43,7 +43,10 @@ public class AuthController {
 	@Resource
 	UserService userService;
 
+	@Resource
 	private MyUserDetailsService myUserDetailsService;
+
+	@Resource
 	private JwtTokenProvider jwtTokenProvider;
 
 
