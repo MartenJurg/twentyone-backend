@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/inventory")
+@Secured({RoleNames.ROLE_ADMIN, RoleNames.ROLE_USER})
 public class InventoryController {
 
     @Resource
