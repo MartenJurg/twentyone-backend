@@ -1,6 +1,5 @@
 package ee.taltech.twentyonebackend.security;
 
-import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "app.jwt")
 public class JwtConfig {
-    private String secret;
-    private int durationMin;
+    private String secret = "SecretString";
+    private int durationMin = 1000 ;
 
     public int getDurationMs() {
         return durationMin * 60 * 1000;
@@ -19,9 +18,5 @@ public class JwtConfig {
 
     public String getSecret() {
         return secret;
-    }
-
-    public int getDurationMin() {
-        return durationMin;
     }
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.function.Function;
 @AllArgsConstructor
 public class JwtTokenProvider {
 
+    @Resource
     private JwtConfig jwtConfig;
 
     public String getUsernameFromToken(String token) {
