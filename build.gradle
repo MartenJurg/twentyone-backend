@@ -30,6 +30,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 	compile group: 'org.springframework.security', name: 'spring-security-crypto'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 bootJar{
