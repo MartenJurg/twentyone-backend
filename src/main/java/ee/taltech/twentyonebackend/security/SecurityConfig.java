@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .headers().httpStrictTransportSecurity().disable()
+                .and()
                 .sessionManagement().sessionCreationPolicy(STATELESS)
                 .and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
