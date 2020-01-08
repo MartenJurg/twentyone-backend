@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 
@@ -22,6 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private MyUserDetailsService myUserDetailsService;
+
+    @Resource
+    private JwtRequestFilter jwtRequestFilter;
+
 
     /**
      * authentication configuration
@@ -48,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/logout").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout().logoutUrl("/logout");
     }
 }

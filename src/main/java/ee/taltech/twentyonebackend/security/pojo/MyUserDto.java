@@ -11,7 +11,6 @@ import java.util.Collection;
  * to have our own properties on session user
  * also to have clean imports as our model User and spring security User have same name "User"
  */
-@Getter
 public class MyUserDto extends User {
 
 
@@ -22,6 +21,14 @@ public class MyUserDto extends User {
         super(username, password, authorities);
         this.role = role;
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public RoleName getRole() {
+        return role;
     }
 
     /**

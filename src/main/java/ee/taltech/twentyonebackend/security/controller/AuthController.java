@@ -4,11 +4,14 @@ import ee.taltech.twentyonebackend.exception.AuthenticationFailedException;
 import ee.taltech.twentyonebackend.model.UserData;
 import ee.taltech.twentyonebackend.model.UserInventory;
 import ee.taltech.twentyonebackend.pojo.RoleName;
+import ee.taltech.twentyonebackend.security.JwtTokenProvider;
+import ee.taltech.twentyonebackend.security.MyUserDetailsService;
 import ee.taltech.twentyonebackend.security.model.User;
 import ee.taltech.twentyonebackend.pojo.UsernamePasswordDto;
 import ee.taltech.twentyonebackend.pojo.response.UserResponse;
 import ee.taltech.twentyonebackend.pojo.response.ResponseMessage;
 import ee.taltech.twentyonebackend.security.Authenticator;
+import ee.taltech.twentyonebackend.security.pojo.MyUserDto;
 import ee.taltech.twentyonebackend.security.request.LoginForm;
 import ee.taltech.twentyonebackend.security.request.SignUpForm;
 import ee.taltech.twentyonebackend.service.UserDataService;
@@ -16,6 +19,7 @@ import ee.taltech.twentyonebackend.service.UserInventoryService;
 import ee.taltech.twentyonebackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +43,11 @@ public class AuthController {
 	@Resource
 	UserService userService;
 
+	private MyUserDetailsService myUserDetailsService;
+	private JwtTokenProvider jwtTokenProvider;
+
+
+
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginForm loginRequest) {
 		boolean authentication = authenticator.authenticate(
@@ -50,8 +59,10 @@ public class AuthController {
         }
 
         // actually has to return authorities.
-		RoleName roleName = userService.getByUsername(loginRequest.getUsername()).getRoleName();
-		return ResponseEntity.ok(new UserResponse(loginRequest.getUsername(),"MIDAIGANES" , roleName.toString()));
+		final UserDetails userDetails = myUserDetailsService.loadUserByUsername(loginRequest.getUsername());
+		final String token = jwtTokenProvider.generateToken(userDetails);
+		MyUserDto myUser = (MyUserDto) userDetails;
+		return ResponseEntity.ok(new UserResponse(myUser.getUsername(), token, myUser.getRole().toString()));
 	}
 
 	@PostMapping("/signup")
