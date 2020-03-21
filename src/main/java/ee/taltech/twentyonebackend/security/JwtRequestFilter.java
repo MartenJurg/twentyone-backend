@@ -1,5 +1,6 @@
 package ee.taltech.twentyonebackend.security;
 
+import ee.taltech.twentyonebackend.pojo.RoleNames;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
